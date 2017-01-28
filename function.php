@@ -1,13 +1,16 @@
 <?php
+ 
 
 function get_image() {
   global $post, $posts;
   $img = '';
+  $content = $post->post_content;
   ob_start();
   ob_end_clean();
-  $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+  $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
   $img = $matches [1] [0];
-  if(empty($img)){ //Defines a default image
+  // if there is no image
+  if(empty($img)){ 
     $img = null;
   }
   return $img;
