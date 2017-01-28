@@ -12,7 +12,7 @@
 
 <p><a href="<?php echo get_permalink();?>"class="nounderline"<?php the_excerpt();?></a></p>
 <?php if(isImage()){?>
- <img src="<?php echo get_image() ?>"height="300" width="300">
+ <img src="<?php echo catch_that_image() ?>"height="300" width="300">
 <?php } ?>
 <a class="nounderline" href="<?php echo get_permalink(); ?>"> Read More...</a>
 
