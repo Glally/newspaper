@@ -1,20 +1,20 @@
 <?php
 
-function catch_that_image() {
+function get_image() {
   global $post, $posts;
-  $first_img = '';
+  $img = '';
   ob_start();
   ob_end_clean();
   $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-  $first_img = $matches [1] [0];
-  if(empty($first_img)){ //Defines a default image
-    $first_img = null;
+  $img = $matches [1] [0];
+  if(empty($img)){ //Defines a default image
+    $img = null;
   }
-  return $first_img;
+  return $img;
 }
 
 function isImage(){ 
-    if(catch_that_image() == null){ 
+    if(get_image() == null){ 
         return FALSE; 
     }else{ 
         return TRUE; 
