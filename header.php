@@ -8,7 +8,10 @@
 <ul class="topnav">
 <center>
 
-
+<?php 
+  // Fix menu overlap
+  if ( is_admin_bar_showing() ) echo '<div style="min-height: 0px;"></div>'; 
+?>
 <a rel="canonical" class="nounderline" href="<?php echo home_url();?>"><h1><?php echo get_bloginfo( 'name' ); ?></h1></a>
 </center>
 </ul>
