@@ -22,10 +22,14 @@ function get_video($width,$height) {
   $content = $post->post_content;
   ob_start();
   ob_end_clean();
-  if (preg_match_all( "/\/watch/", $content, $matches) ){
-	$video =$matches [1][0];   
-  $video = "<iframe width='$width' height='$height' src='$video'>
-</iframe>";
+  if (preg_match_all('#<a href="https?://www.youtube.*?>([^>]*)</a>#i', $content, $matches) ){
+	 
+	 $video =strip_tags($content);
+	 $video = str_replace("/watch?v=","/embed/", $video);
+	 $video = str_replace("&nbsp;","",$video);
+	 $video = "<iframe width='$width' height='$height' src='$video'>
+	</iframe>";
+
   }
   if(preg_match_all('/(mp[34]=.*)[\'"].*/i', $content, $matches)){
 	   
@@ -33,6 +37,13 @@ function get_video($width,$height) {
   $video = str_replace('mp4="', '', $video) ;
   $video="<video width='$width' height='$height' controls src='$video'></video>";
   }
+  if(preg_match('/<iframe.*src=\"(.*)\".*><\/iframe>/isU', $content, $matches)){
+	   
+  $video =$matches [1];
+  $video = "<iframe width='$width' height='$height' src='$video'>
+	</iframe>";
+  }
+  
   
    return $video;
  }
