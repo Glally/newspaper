@@ -23,6 +23,6 @@
 <!--<hr> --> <?php endwhile;?> <?php else: ?>
 <p><?php _e('Sorry, no posts matched your criteria.'); ?></p><?php endif; ?>
 
-<div id="delimiter">
+<div  id="delimiter">
 </div>
 <?php get_footer(); ?>

@@ -7,11 +7,6 @@
 <title><?php echo get_bloginfo('name')?></title>
 <ul class="topnav">
 <center>
-
-<?php 
-  // Fix menu overlap
-  if ( is_admin_bar_showing() ) echo '<div style="min-height: 0px;"></div>'; 
-?>
 <a rel="canonical" class="nounderline" href="<?php echo home_url();?>"><h1><?php echo get_bloginfo( 'name' ); ?></h1></a>
 </center>
 </ul>
@@ -39,7 +34,7 @@ foreach ( $categories as $category ) {
 	echo $catTitle;} ?></center></h1>
 <center><h1><?php if(is_search()){
 			echo "results";} ?> </center></h1>
-<div style="padding-left:16px">
+<divclass= "NW" style="padding-left:16px">
 <script>
 function myFunction() {
     document.getElementsByClassName("nav")[0].classList.toggle("responsive");
