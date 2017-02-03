@@ -14,7 +14,12 @@
 
 
 <ul class="nav">
-
+<div style="padding-left:16px">
+<script>
+function myFunction() {
+    document.getElementsByClassName("nav")[0].classList.toggle("responsive");
+}
+</script>
 	
  <?php
  $list =  array('orderby'=> DESC,
@@ -39,12 +44,7 @@ foreach ( $categories as $category ) {
 	echo $catTitle;} ?></center></h1>
 <center><h1><?php if(is_search()){
 			echo "results";} ?> </center></h1>
-<div style="padding-left:16px">
-<script>
-function myFunction() {
-    document.getElementsByClassName("nav")[0].classList.toggle("responsive");
-}
-</script>
+
 </div>
 
 
