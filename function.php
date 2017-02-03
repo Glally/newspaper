@@ -68,7 +68,25 @@ function get_video($width,$height) {
   
    return $video;
  }
-
+ // Make a youtube link in the_content() a video preview
+function get_video_link($content){
+	if ( is_single() ) {
+	if (preg_match('#<a href="https?://www.youtube.*?>([^>]*)</a>#i', $content, $matches) ){
+		$video = $matches [1];
+		$video =strip_tags($video);
+		$video = str_replace("/watch?v=","/embed/", $video);
+		$video = str_replace("&nbsp;","",$video);
+		$video = "<iframe width='600' height='800' src='$video'>
+		</iframe>";
+		
+	  //$content = "<iframe width='600' height='800' '$content'>
+	//</iframe>";
+	
+  }
+	} 
+  return $content.$video;
+ 
+}
 
 function isImage(){ 
     
@@ -87,4 +105,13 @@ function isVideo(){
      
 }
 
+// Check if the_content() is a youtube link
+function isVideoLink($content){ 
+    
+	if(get_video_link($content) == null){ 
+        return FALSE; 
+    }
+    return TRUE; 
+     
+}
 ?>
