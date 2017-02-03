@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header(); include "function.php"; ?>
 <?php
     global $query_string;
     $query_args = explode("&", $query_string);
@@ -16,9 +16,9 @@
 
     <ul>    
     <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-        <p>
-            <a   rel="canonical" class="nounderline" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-        </p>   
+       
+            <?php post_results()?>
+          
     <?php endwhile; ?>
     </ul>
     <!-- end of the loop -->

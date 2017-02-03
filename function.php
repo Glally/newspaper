@@ -16,6 +16,27 @@ function get_image($height,$width) {
   return $img;
 }
 
+function post_results(){ ?> 
+	
+	<div class="post" style="display: inline-block;">
+
+	<h1><a href="<?php the_permalink() ?>" rel="bookmark"  class="nounderline"title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1> 
+	<h4><a class="nounderline" href="<?php the_permalink() ?>">Posted on <?php the_time('F jS, Y') ?></h4> 
+
+
+	<?php if(isImage()){?>
+	<?php echo get_image(300,300) ?>
+	<?php } ?>
+	<?php if(isVideo()){?>
+			<?php echo get_video(300,300) ?>
+	<?php } ?>
+
+	<a class="nounderline" href="<?php echo get_permalink(); ?>"><p><class="nounderline"<?php the_excerpt();?> Read More...</p></a>
+
+	</div> <?php } 
+
+
+
 function get_video($width,$height) {
   global $post, $posts;
   $video = '';
