@@ -1,6 +1,4 @@
-html { margin-top:0px; 
-		padding-top:0px; 
-	}
+
 form.search {
   overflow: hidden;
 }
@@ -8,13 +6,14 @@ input.search {
   float: right;
   clear: both;
 }
-div.top{
+.top{
 	top: 0;
 bottom: 0;
 margin: auto;
 position: absolute;
 left: 0;
 right: 0;
+margin: 0;
 }
 ul.topnav {
 
@@ -75,10 +74,7 @@ ul.nav li.icon {display: none;}
 	display: inline-block;
 	margin:0px;	
   }
-	body{
-		margin:0px;
-	     
-	}
+	
 	
 	input[type=text]{
 		float: bottom;
@@ -182,6 +178,7 @@ li a {
 
 body{
 		background-color:#F8F8F8;
+		
 }
 .right {
     float: right;
@@ -205,6 +202,7 @@ div.post {
     padding: 25px;
     border: 25px black;
     margin: 25px;
+	
 	
 
 }

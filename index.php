@@ -1,6 +1,5 @@
 
 <?php get_header();include 'function.php';?>
-
 <!--<div id="main"> -->
 <!--<div id="content"> -->
 <?php $posts=query_posts($query_string."&orderby=date&order=DESC"); ?>
@@ -10,14 +9,15 @@
 <h1><a href="<?php the_permalink() ?>" rel="bookmark"  class="nounderline"title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1> 
 <h4>Posted on <?php the_time('F jS, Y') ?></h4> 
 
-<p><a href="<?php echo get_permalink();?>"class="nounderline"<?php the_excerpt();?></a></p>
+
 <?php if(isImage()){?>
  <?php echo get_image(300,300) ?>
 <?php } ?>
 <?php if(isVideo()){?>
 			<?php echo get_video(300,300) ?>
 <?php } ?>
-<a class="nounderline" href="<?php echo get_permalink(); ?>"> Read More...</a>
+
+<a class="nounderline" href="<?php echo get_permalink(); ?>"><p><class="nounderline"<?php the_excerpt();?> Read More...</p></a>
 
 </div> 
 <!--<hr> --> <?php endwhile;?> <?php else: ?>
@@ -26,3 +26,4 @@
 <div  id="delimiter">
 </div>
 <?php get_footer(); ?>
+</div>
