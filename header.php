@@ -25,7 +25,7 @@ foreach ( $categories as $category ) {
 	echo '<li> <a rel="canonical" class="nounderline" href="' . get_category_link( $category->term_id ) . '"><h3>' . $category->name . '</h3></a></li> ';
 }
 ?>
- <form class= "search" action="<?php echo home_url(); ?>" method="get" id="searchform" > <input type="text" class="search" name="s" placeholder="Search.." > </form> 
+<form class= "search" action="<?php echo home_url(); ?>" method="get" id="searchform" > <input type="text" class="search" name="s" placeholder="Search.." > </form>  
 	<li class="icon"> 
     <a href="javascript:void(0);" style="font-size:15px;"class="nounderline" onclick="myFunction()">&#9776;</a>
   </li>
@@ -39,7 +39,13 @@ foreach ( $categories as $category ) {
 	echo $catTitle;} ?></center></h1>
 <center><h1><?php if(is_search()){
 			echo "results";} ?> </center></h1>
-
+<div style="padding-left:16px">
+<script>
+function myFunction() {
+    document.getElementsByClassName("nav")[0].classList.toggle("responsive");
+}
+</script>
+</div>
 
 
  </center>
