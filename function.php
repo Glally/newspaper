@@ -84,7 +84,7 @@ function get_video_link($content){
 	
   }
 	} 
-  return $content.$video;
+  return $video.$content;
  
 }
 
@@ -105,13 +105,5 @@ function isVideo(){
      
 }
 
-// Check if the_content() is a youtube link
-function isVideoLink($content){ 
-    
-	if(get_video_link($content) == null){ 
-        return FALSE; 
-    }
-    return TRUE; 
-     
-}
+
 ?>
