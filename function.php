@@ -38,27 +38,27 @@ function post_results(){ ?>
 
 
 function get_video($width,$height) {
-  global $post, $posts;
+	global $post, $posts;
   $video = '';
-  $content = $post->post_content;
+  $posting = $post->post_content;
   ob_start();
   ob_end_clean();
-  if (preg_match_all('#<a href="https?://www.youtube.*?>([^>]*)</a>#i', $content, $matches) ){
-	 
-	 $video =strip_tags($content);
+  if (preg_match_all('#<a href="https?://www.youtube.*?>([^>]*)</a>#i', $posting, $matches) ){
+	 $video =  $matches [1][0];
+	 $video =strip_tags($video);
 	 $video = str_replace("/watch?v=","/embed/", $video);
 	 $video = str_replace("&nbsp;","",$video);
 	 $video = "<iframe width='$width' height='$height' src='$video'>
 	</iframe>";
 
   }
-  if(preg_match_all('/(mp[34]=.*)[\'"].*/i', $content, $matches)){
+  if(preg_match_all('/(mp[34]=.*)[\'"].*/i', $posting, $matches)){
 	   
   $video =$matches [1][0];
   $video = str_replace('mp4="', '', $video) ;
   $video="<video width='$width' height='$height' controls src='$video'></video>";
   }
-  if(preg_match('/<iframe.*src=\"(.*)\".*><\/iframe>/isU', $content, $matches)){
+  if(preg_match('/<iframe.*src=\"(.*)\".*><\/iframe>/isU', $posting, $matches)){
 	   
   $video =$matches [1];
   $video = "<iframe width='$width' height='$height' src='$video'>
@@ -76,7 +76,7 @@ function get_video_link($content){
 		$video =strip_tags($video);
 		$video = str_replace("/watch?v=","/embed/", $video);
 		$video = str_replace("&nbsp;","",$video);
-		$video = "<iframe width='600' height='800' src='$video'>
+		$video = "<iframe width='560' height='315'  src='$video'>
 		</iframe>";
 		
 	  //$content = "<iframe width='600' height='800' '$content'>
