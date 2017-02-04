@@ -25,10 +25,10 @@ function post_results(){ ?>
 
 
 	<?php if(isImage()){?>
-	<?php echo get_image(300,300) ?>
+	<?php echo get_image(200,200) ?>
 	<?php } ?>
 	<?php if(isVideo()){?>
-			<?php echo get_video(300,300) ?>
+			<?php echo get_video(200,200) ?>
 	<?php } ?>
 
 	<a class="nounderline" href="<?php echo get_permalink(); ?>"><p><class="nounderline"<?php the_excerpt();?> Read More...</p></a>
