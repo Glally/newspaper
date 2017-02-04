@@ -24,13 +24,12 @@ get_header(); include "function.php" ?>
 
 
 </div>
-<hr>
-<div>
-<p>	<?php comments_template(); ?>	</p>
-</div>
-   <p>	 <?php// comments_template(); ?></p>
+
+
+   	 <?php// comments_template(); ?>
 	
     <?php endwhile; endif; ?>
      
 
 <?php get_footer() ?>
+<div class= "comment">	<?php comments_template();?> <style="display: inline-block;">	<div>
