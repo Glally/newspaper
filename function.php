@@ -104,6 +104,39 @@ function isVideo(){
     return TRUE; 
      
 }
+function link_post($cat_post){
 
+    // Get the category id
+    $cat_id = get_cat_ID( $cat_post );
+
+    // Get the category url
+    $cat_link = get_category_link( $cat_id );
+	return $cat_link;
+}
 
 ?>
+
+
+
+<?php
+  function ci_get_related_posts( $post_id, $related_count, $args = array() ) {
+    $terms        = get_the_terms( $post_id, 'category' );
+    if ( empty( $terms ) ) $terms = array();
+    $term_list    = wp_list_pluck( $terms, 'slug' );
+    $related_args = array(
+      'post_type'      => 'post',
+      'posts_per_page' => $related_count,
+      'post_status'    => 'publish',
+      'post__not_in'   => array( $post_id ),
+      'orderby'        => 'rand',
+      'tax_query'      => array(
+        array(
+          'taxonomy' => 'category',
+          'field'    => 'slug',
+          'terms'    => $term_list
+        )
+      )
+    );
+ 
+    return new WP_Query( $related_args );
+  }

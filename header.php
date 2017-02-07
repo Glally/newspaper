@@ -22,25 +22,14 @@ function myFunction() {
 </script>
 </div>
  <?php
-    if (is_category()) {
-    $get_category = get_category($cat);
-    }
-    ?>
-    <?php
-    if($get_category->category_parent){
-    $get_category = '<li>'.'<h1>'.wp_list_categories('orderby=id&
-    &title_li=&use_desc_for_title=1&child_of='.$get_category->category_parent).'</h1>'.'</li>';
-	}else{
-    $get_category = wp_list_categories('orderby=id&depth=1
-    &title_li=&use_desc_for_title=1&child_of='.$get_category->cat_ID);
-    if ($get_category) { ?> 
-
-<ul>
-<?php echo $get_category; ?>
-
-</ul>
-
-	<?php } }?>
+ $list =  array('orderby'=> DESC,
+  'parent' => 0
+  );
+$categories = get_categories( $list );
+foreach ( $categories as $category ) {
+	echo '<li> <a rel="canonical" class="nounderline" href="' . get_category_link( $category->term_id ) . '"><h3>' . $category->name . '</h3></a></li> ';
+}
+?>
 <form class= "search" action="<?php echo home_url(); ?>" method="get" id="searchform" > <input type="text" class="search" name="s" placeholder="Search.." > </form>  
 <li class="icon"> 
 
@@ -52,9 +41,7 @@ function myFunction() {
   </ul>
 
 <center><h1><?php if(!is_category()&& !is_single()&& !is_search()){ bloginfo('description');} ?></center></h1>
-<center><h1><?php if(is_category()|| is_single()){
-	 $catTitle=  single_cat_title(''); 
-	echo $catTitle;} ?></center></h1>
+
 <center><h1><?php if(is_search()){
 			echo "results";} ?> </center></h1>
 
