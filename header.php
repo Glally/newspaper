@@ -30,6 +30,12 @@ foreach ( $categories as $category ) {
 	echo '<li> <a rel="canonical" class="nounderline" href="' . get_category_link( $category->term_id ) . '"><h3>' . $category->name . '</h3></a></li> ';
 }
 ?>
+
+
+<!--<div id="main"> -->
+<!--<div id="content"> -->
+
+
 <form class= "search" action="<?php echo home_url(); ?>" method="get" id="searchform" > <input type="text" class="search" name="s" placeholder="Search.." > </form>  
 <li class="icon"> 
 
@@ -37,15 +43,14 @@ foreach ( $categories as $category ) {
     <a href="javascript:void(0);" style="font-size:15px;"class="nounderline" onclick="myFunction()">&#9776;</a>
     </li>
  
- 
-  </ul>
+ </ul>
 
 <center><h1><?php if(!is_category()&& !is_single()&& !is_search()){ bloginfo('description');} ?></center></h1>
 
 <center><h1><?php if(is_search()){
 			echo "results";} ?> </center></h1>
 
-
+	
 <?php wp_head()?>
 </head>
 <body>

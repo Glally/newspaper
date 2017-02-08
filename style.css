@@ -2,6 +2,11 @@
 form.search {
   overflow: hidden;
 }
+ul.related{
+	float: right;
+	clear: both;
+}
+
 input.search {
   float: right;
   clear: both;
