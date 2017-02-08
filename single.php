@@ -13,17 +13,37 @@ $catname = get_the_category()[0]->cat_name ;
 ?>
 
 <!-- Print a link to this category -->
-<ul class="nav"><a href="<?php echo esc_url( link_post($catname) ); ?>" title="<?php echo $catname?>"><?php echo $catname?></a></ul>
+<ul class="nav"><a href="<?php echo esc_url( link_post($catname) ); ?>" title="<?php echo $catname?>"><?php echo "More $catname"?></a></ul>
 <center><h1><?php $catTitle= get_the_category()[0]->cat_name;
 				echo $catTitle;?></h1></center>
-<center>
+	
 
-</center>	
+
+
+<!-- related posts -->
+ <?php $related = ci_get_related_posts( get_the_ID(), -1 );
+ 
+          if( $related->have_posts() ):
+          ?>
+			
+			<ul class = "related">
+            <div class="post-navigation">
+              <h3>Related posts</h3>
+              
+                <?php while( $related->have_posts() ): $related->the_post(); ?>
+				
+			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+			<hr>
+                <?php endwhile; ?>
+              </ul>
+           
+          <?php
+          endif; ?>
 <center>
 	
 	<?php $posts=query_posts($query_string."&orderby=date&order=DESC"); ?>
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-    <div <?php post_class() ?>   style=width:70% >
+    <div class ="post"   style=width:38%  >
         <h2><?php the_title();?></h2>
         <small><?php the_time('F jS, Y') ?> <!-- by <?php the_author() ?> --></small>
 		
@@ -42,22 +62,7 @@ $catname = get_the_category()[0]->cat_name ;
    	 <?php// comments_template(); ?>
 	
     <?php endwhile; endif; ?>
-   <?php $related = ci_get_related_posts( get_the_ID(), -1 );
- 
-          if( $related->have_posts() ):
-          ?>
-            <div class="post-navigation">
-              <h3>Related posts</h3>
-              <ul>
-                <?php while( $related->have_posts() ): $related->the_post(); ?>
-				
-			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-			<br>
-			<br>
-                <?php endwhile; ?>
-              </ul>
-            </div>
-          <?php
-          endif; ?>
+ <br> 
+
 <?php get_footer() ?>
 <div class= "comment">	<?php comments_template();?> <style="display: inline-block;">	<div>
