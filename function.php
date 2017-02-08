@@ -76,7 +76,7 @@ function get_video_link($content){
 		$video =strip_tags($video);
 		$video = str_replace("/watch?v=","/embed/", $video);
 		$video = str_replace("&nbsp;","",$video);
-		$video = "<iframe width='560' height='315'  src='$video'>
+		$video = "<iframe width='560' height='315'  src='$video' allowfullscreen='allowfullscreen'>
 		</iframe>";
 		
 	  //$content = "<iframe width='600' height='800' '$content'>
