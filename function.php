@@ -78,13 +78,13 @@ function get_video_link($content){
 		$video = str_replace("&nbsp;","",$video);
 		$video = "<iframe width='560' height='315'  src='$video' allowfullscreen='allowfullscreen'>
 		</iframe>";
-		
+		$content =preg_replace('/<a (.*?)href=[\"\'](.*?)\/\/(.*?)[\"\'](.*?)>(.*?)<\/a>/i', "$video", $content);
 	  //$content = "<iframe width='600' height='800' '$content'>
 	//</iframe>";
 	
   }
 	} 
-  return $video.$content;
+  return $content;
  
 }
 
