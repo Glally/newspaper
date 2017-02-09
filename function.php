@@ -1,5 +1,7 @@
 <?php
+/* Newspager theme 
 
+	created by Gus Lally*/
 
 
 
@@ -34,7 +36,7 @@ function post_results(){ ?>
 			
 			<?php echo get_video(200,200) ?>
 	<?php }  ?>
-	<a class="nounderline" href="<?php echo get_permalink(); ?>"><p><class="nounderline"<?php add_filter( 'the_excerpt', 'get_video_link_excerpt' );  the_excerpt();?> Read More...</p></a>
+	<a class="nounderline" href="<?php echo get_permalink(); ?>"><p><class="nounderline"<?php   the_excerpt();?> Read More...</p></a>
 
 	</div> <?php } 
 
@@ -47,6 +49,7 @@ function get_video($width,$height) {
   ob_start();
   ob_end_clean();
   if (preg_match_all('#<a href="https?://www.youtube.*?>([^>]*)</a>#i', $posting, $matches) ){
+	 add_filter( 'the_excerpt', 'get_video_link_excerpt' );
 	 $video =  $matches [1][0];
 	 $video =strip_tags($video);
 	 $video = str_replace("/watch?v=","/embed/", $video);
@@ -75,9 +78,10 @@ function get_video($width,$height) {
  // Make a youtube link in the_content() a video preview
 function get_video_link($content){
 	if ( is_single() ) {
-	if (preg_match('#<a href="https?://www.youtube.*?>([^>]*)</a>#i', $content, $matches) ){
+	if (preg_match('#<a href="https?://www.youtube.*?>([^>]*)</a>#i', $content, $matches)  ){
 		$video = $matches [1];
 		$video =strip_tags($video);
+		//Make the video link embeded if it is not
 		$video = str_replace("/watch?v=","/embed/", $video);
 		$video = str_replace("&nbsp;","",$video);
 		$video = "<iframe width='560' height='315'  src='$video' allowfullscreen='allowfullscreen'>
@@ -95,9 +99,11 @@ function get_video_link($content){
 // Make a youtube link in the_excerpt) a video preview
 function get_video_link_excerpt($posting){
 	if (preg_match('#https://(?:www\.)?youtu\.?be(?:\.com)?/(embed/|watch\?v=|\?v=|v/|e/|.+/|watch.*v=*|)#i', $posting, $matches) ){
-		 $posting = str_replace("/embed/","/watch?v=", $posting);
+		// $posting = str_replace("/embed/","/watch?v=", $posting);
+		//Replace non embeded video link with blank text
 		$posting= preg_replace('@(https?://)?(?:www\.)?(youtu(?:\.be/([-\w]+)|be\.com/watch\?v=([-\w]+)))\S*@im',"", $posting);
-	
+		//Replaved embed video link with blank text
+		$posting= preg_replace('@(https?://)?(?:www\.)?(youtu(?:\.be/([-\w]+)|be\.com/embed/([-\w]+)))\S*@im',"", $posting);
   }
 	
   return $posting; 

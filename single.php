@@ -1,3 +1,6 @@
+<?php/* Newspager theme 
+
+	created by Gus Lally*/ ?>
 
 <?php
 /**

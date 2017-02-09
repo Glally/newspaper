@@ -1,3 +1,7 @@
+<?php/* Newspager theme 
+
+	created by Gus Lally*/ ?>
+
 <?php get_header(); include "function.php"; ?>
 <?php
     global $query_string;
@@ -14,11 +18,11 @@
     ?>
     <!-- the loop -->
 
-    <ul>    
+    <ul> 
     <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-       
+		
             <?php post_results()?>
-          
+			
     <?php endwhile; ?>
     </ul>
     <!-- end of the loop -->

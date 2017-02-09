@@ -1,5 +1,7 @@
 <doctype! html>
+<?php /* Newspager theme 
 
+	created by Gus Lally*/?> 
 <html>
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 

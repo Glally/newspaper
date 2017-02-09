@@ -1,4 +1,7 @@
-<hr>
+<?php/* Newspager theme 
+
+	created by Gus Lally*/ ?>
+
 <center>
 <div id="footer" style="padding-left:16px" class="foot">
 
