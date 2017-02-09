@@ -1,5 +1,7 @@
 <?php
- 
+
+
+
 
 function get_image($height,$width) {
   global $post, $posts;
@@ -16,6 +18,7 @@ function get_image($height,$width) {
   return $img;
 }
 
+
 function post_results(){ ?> 
 	
 	<div class="post" style="display: inline-block;">
@@ -23,15 +26,15 @@ function post_results(){ ?>
 	<h1><a href="<?php the_permalink() ?>" rel="bookmark"  class="nounderline"title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1> 
 	<h4><a class="nounderline" href="<?php the_permalink() ?>">Posted on <?php the_time('F jS, Y') ?></h4> 
 
-
+	
 	<?php if(isImage()){?>
 	<?php echo get_image(200,200) ?>
 	<?php } ?>
 	<?php if(isVideo()){?>
+			
 			<?php echo get_video(200,200) ?>
-	<?php } ?>
-
-	<a class="nounderline" href="<?php echo get_permalink(); ?>"><p><class="nounderline"<?php the_excerpt();?> Read More...</p></a>
+	<?php }  ?>
+	<a class="nounderline" href="<?php echo get_permalink(); ?>"><p><class="nounderline"<?php add_filter( 'the_excerpt', 'get_video_link_excerpt' );  the_excerpt();?> Read More...</p></a>
 
 	</div> <?php } 
 
@@ -50,7 +53,8 @@ function get_video($width,$height) {
 	 $video = str_replace("&nbsp;","",$video);
 	 $video = "<iframe width='$width' height='$height' src='$video'>
 	</iframe>";
-
+	
+	
   }
   if(preg_match_all('/(mp[34]=.*)[\'"].*/i', $posting, $matches)){
 	   
@@ -87,6 +91,19 @@ function get_video_link($content){
   return $content;
  
 }
+
+// Make a youtube link in the_excerpt) a video preview
+function get_video_link_excerpt($posting){
+	if (preg_match('#https://(?:www\.)?youtu\.?be(?:\.com)?/(embed/|watch\?v=|\?v=|v/|e/|.+/|watch.*v=*|)#i', $posting, $matches) ){
+		 $posting = str_replace("/embed/","/watch?v=", $posting);
+		$posting= preg_replace('@(https?://)?(?:www\.)?(youtu(?:\.be/([-\w]+)|be\.com/watch\?v=([-\w]+)))\S*@im',"", $posting);
+	
+  }
+	
+  return $posting; 
+ 
+}
+
 
 function isImage(){ 
     
