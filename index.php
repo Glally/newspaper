@@ -7,22 +7,43 @@
 
 	
 <?php get_header();include 'function.php';?>
+
+<?php
+$catTitle = $catTitle= single_cat_title('',false);
+// Category title_
+ $catid = $category[0]->cat_ID;
+ 
+ // get the top level cat id of a single post
+
+$category = get_the_category($post->ID);
+ 
+$catid = $category[0]->cat_ID;
+$catId = get_cat_ID($catTitle);
+
+$top_level_cat = smart_category_top_parent_id ($catid);
+if(category_has_parent($catId)){
+	echo '<ul class = "nav">'; 
+	 ?> 
+
+	<?php
+
+	$get_category = wp_list_categories('orderby=id&depth=1
+		&title_li=&use_desc_for_title=1&child_of='.$top_level_cat);?>
+
+</ul>
+<br>
+<?php }?>
 <?php
 
 $get_category = null;
- if(is_category()|| is_single()){
-
-	 
-	}
+ 
 	?>
 
-    <?php $catTitle= single_cat_title('',false);
-			$get_category = get_category($cat);?>
+    
 			
-<?php if($catTitle != get_bloginfo('description') && is_category()) {
-	
+<?php if($catTitle != get_bloginfo('description') && is_category() && !empty(get_categories('orderby=id&depth=1
+    &title_li=&use_desc_for_title=1&child_of='.$catId))) {
 	echo '<ul class = "nav">';
-    $catId = get_cat_ID($catTitle);
 	//$catId-=1;
 	//echo $get_category->cat_ID;
 	//echo $catId;
@@ -30,7 +51,6 @@ $get_category = null;
     $get_category = wp_list_categories('orderby=id&depth=1
     &title_li=&use_desc_for_title=1&child_of='.$catId);
  
-
 		
 	
 		echo "</ul>"?>

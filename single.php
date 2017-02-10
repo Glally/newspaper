@@ -1,25 +1,61 @@
 <?php/* Newspager theme 
 
 	created by Gus Lally*/ ?>
+	
+
 
 <?php
 /**
  * The Template for displaying all single posts.
  */
+// Get the category name
 
 get_header(); include "function.php"; ?>
 
 <?php
-// Get the category name
-$catname = get_the_category()[0]->cat_name ;
+$catTitle = get_the_category()[0]->cat_name ;
+// get the top level cat id of a single post
+
+$category = get_the_category($post->ID);
+ 
+$catid = $category[0]->cat_ID;
+$catId = get_cat_ID($catTitle);
+$top_level_cat = smart_category_top_parent_id ($catid);
+if(category_has_parent($catid)){
+	echo '<ul class = "nav">'; 
+	 ?> 
+
+	<?php $get_category = wp_list_categories('orderby=id&depth=1
+		&title_li=&use_desc_for_title=1&child_of='.$top_level_cat);?>
+
+</ul>
+<br>
+<?php } ?>
+<?php
+
+$get_category = null;
+ 
+	?>
+<?php if($catTitle != get_bloginfo('description') && is_category() && !empty(get_categories('orderby=id&depth=1
+    &title_li=&use_desc_for_title=1&child_of='.$catid))) {
+ // get the top level cat id of a single post
+echo '<ul class = "nav">'; 
+$category = get_the_category($post->ID);
+ 
+
+ 
+$top_level_cat = smart_category_top_parent_id ($catId); ?> 
+
+<?php $get_category = wp_list_categories('orderby=id&depth=1
+    &title_li=&use_desc_for_title=1&child_of='.$catId);?>
+
+<?php
+
 
 ?>
-
-<!-- Print a link to this category -->
-<ul class="nav"><a href="<?php echo esc_url( link_post($catname) ); ?>" title="<?php echo $catname?>"><?php echo "More $catname"?></a></ul>
-<center><h1><?php $catTitle= get_the_category()[0]->cat_name;
-				echo $catTitle;?></h1></center>
-	
+</ul>
+<?php } ?>
+<center><h1> <?php echo $catTitle ; ?></center></h1>	
 
 
 

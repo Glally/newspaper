@@ -3,7 +3,30 @@
 
 	created by Gus Lally*/
 
+/**
+* Returns ID of top-level parent category, or current category if you are viewing a top-level
+*
+* @param    string      $catid      Category ID to be checked
+* @return   string      $catParent  ID of top-level parent category
+*/
 
+function category_has_parent($catid){
+    $category = get_category($catid);
+    if ($category->category_parent > 0){
+        return true;
+    }
+    return false;
+}
+function smart_category_top_parent_id ($catid) {
+    while ($catid) {
+        $cat = get_category($catid); // get the object for the catid
+        $catid = $cat->category_parent; // assign parent ID (if exists) to $catid
+          // the while loop will continue whilst there is a $catid
+          // when there is no longer a parent $catid will be NULL so we can assign our $catParent
+        $catParent = $cat->cat_ID;
+    }
+    return $catParent;	
+}
 
 function get_image($height,$width) {
   global $post, $posts;
