@@ -24,7 +24,17 @@ $top_level_cat = smart_category_top_parent_id ($catid);
 if(category_has_parent($catid)){
 	echo '<ul class = "nav">'; 
 	 ?> 
-
+	<div style="padding-left:16px">
+	<script>
+	function myFunction2() {
+		document.getElementsByClassName("nav")[1].classList.toggle("responsive");
+	}
+	</script>
+	</div>
+		<li class="icon"> 
+	
+    <a href="javascript:void(0);" style="font-size:15px;"class="nounderline" onclick="myFunction2()"><?php echo$catTitle;?></a>
+    </li>
 	<?php $get_category = wp_list_categories('orderby=id&depth=1
 		&title_li=&use_desc_for_title=1&child_of='.$top_level_cat);?>
 
@@ -39,7 +49,19 @@ $get_category = null;
 <?php if($catTitle != get_bloginfo('description') && is_category() && !empty(get_categories('orderby=id&depth=1
     &title_li=&use_desc_for_title=1&child_of='.$catid))) {
  // get the top level cat id of a single post
-echo '<ul class = "nav">'; 
+echo '<ul class = "nav">'; ?>
+<div style="padding-left:16px">
+	<script>
+	function myFunction2() {
+		document.getElementsByClassName("nav")[1].classList.toggle("responsive");
+	}
+	</script>
+	</div>
+		<li class="icon"> 
+	
+    <a href="javascript:void(0);" style="font-size:15px;"class="nounderline" onclick="myFunction2()"><?php echo$catTitle;?></a>
+    </li>
+<?php
 $category = get_the_category($post->ID);
  
 

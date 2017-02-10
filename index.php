@@ -23,8 +23,19 @@ $catId = get_cat_ID($catTitle);
 $top_level_cat = smart_category_top_parent_id ($catid);
 if(category_has_parent($catId)){
 	echo '<ul class = "nav">'; 
+	
 	 ?> 
-
+	<div style="padding-left:16px">
+	<script>
+	function myFunction2() {
+		document.getElementsByClassName("nav")[1].classList.toggle("responsive");
+	}
+	</script>
+	</div>
+		<li class="icon"> 
+	
+    <a href="javascript:void(0);" style="font-size:15px;"class="nounderline" onclick="myFunction2()"><?php echo$catTitle;?></a>
+    </li>
 	<?php
 
 	$get_category = wp_list_categories('orderby=id&depth=1
@@ -32,6 +43,7 @@ if(category_has_parent($catId)){
 
 </ul>
 <br>
+
 <?php }?>
 <?php
 
@@ -47,7 +59,17 @@ $get_category = null;
 	//$catId-=1;
 	//echo $get_category->cat_ID;
 	//echo $catId;
-    
+    ?><div style="padding-left:16px">
+	<script>
+	function myFunction2() {
+		document.getElementsByClassName("nav")[1].classList.toggle("responsive");
+	}
+	</script>
+	</div>
+		<li class="icon"> 
+	
+    <a href="javascript:void(0);" style="font-size:15px;"class="nounderline" onclick="myFunction2()"><?php echo$catTitle;?></a>
+    </li><?php
     $get_category = wp_list_categories('orderby=id&depth=1
     &title_li=&use_desc_for_title=1&child_of='.$catId);
  
