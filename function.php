@@ -57,7 +57,7 @@ function post_results(){ ?>
 	<?php } ?>
 	<?php if(isVideo()){?>
 			
-			<?php echo get_video(200,200) ?>
+			<?php echo get_video(300,200) ?>
 	<?php }  ?>
 	<a class="nounderline" href="<?php echo get_permalink(); ?>"><p><class="nounderline"<?php   the_excerpt();?> Read More...</p></a>
 
@@ -107,25 +107,30 @@ function get_video_link($content){
 		//Make the video link embeded if it is not
 		$video = str_replace("/watch?v=","/embed/", $video);
 		$video = str_replace("&nbsp;","",$video);
-		$video = "<iframe width='560' height='315'  src='$video' allowfullscreen='allowfullscreen'>
+		$video = "<iframe class = 'embed'  src='$video' frameborder='0' allowfullscreen='allowfullscreen'>
 		</iframe>";
 		$content =preg_replace('/<a (.*?)href=[\"\'](.*?)\/\/(.*?)[\"\'](.*?)>(.*?)<\/a>/i', "$video", $content);
-	  //$content = "<iframe width='600' height='800' '$content'>
-	//</iframe>";
-	
+	return $content;
   }
-	} 
+  // Make sure if there already is a video in an iframe that it is mobile friendly
+  if(preg_match('/<iframe.*src=\"(.*)\".*><\/iframe>/isU',$content,$matches)){
+	  $video = $matches[0];
+	  $video = str_replace("width=","", $video);
+	$video = str_replace("height=","class='embed'",$video);
+	$content =preg_replace('/<iframe.*src=\"(.*)\".*><\/iframe>/isU', "$video", $content);
+	  return $content;
+  }
+ } 
   return $content;
  
 }
 
-// Make a youtube link in the_excerpt) a video preview
+// remove video links in text from the excerpt
 function get_video_link_excerpt($posting){
 	if (preg_match('#https://(?:www\.)?youtu\.?be(?:\.com)?/(embed/|watch\?v=|\?v=|v/|e/|.+/|watch.*v=*|)#i', $posting, $matches) ){
-		// $posting = str_replace("/embed/","/watch?v=", $posting);
-		//Replace non embeded video link with blank text
+		// Replace video link text with blank text
 		$posting= preg_replace('@(https?://)?(?:www\.)?(youtu(?:\.be/([-\w]+)|be\.com/watch\?v=([-\w]+)))\S*@im',"", $posting);
-		//Replaved embed video link with blank text
+		// Replace embed video link text with blank text
 		$posting= preg_replace('@(https?://)?(?:www\.)?(youtu(?:\.be/([-\w]+)|be\.com/embed/([-\w]+)))\S*@im',"", $posting);
   }
 	
