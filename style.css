@@ -6,7 +6,7 @@ form.search {
   overflow: hidden;
 }
 ul.related{
-	float: right;
+	float: left;
 	clear: both;
 }
 
@@ -76,9 +76,8 @@ ul.footnav li a {
   font-size: 16px;
 }
 iframe.embed {
-
-	width:560px;
-	height: 315px;
+	width:800px;
+	height: 450px;
  
 
 	}
@@ -234,7 +233,7 @@ body{
 div.post {
 	
     width: 300px;
-    padding: 25px;
+    padding: 0px;
     border: 25px black;
     margin: 25px;
 	background-color:#F8F8F8;
