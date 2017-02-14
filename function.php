@@ -2,6 +2,8 @@
 /* Newspager theme 
 
 	created by Gus Lally*/
+	
+
 
 /**
 * Returns ID of top-level parent category, or current category if you are viewing a top-level
@@ -10,6 +12,9 @@
 * @return   string      $catParent  ID of top-level parent category
 */
 
+
+
+//Check if there is a parrent category
 function category_has_parent($catid){
     $category = get_category($catid);
     if ($category->category_parent > 0){
@@ -82,6 +87,17 @@ function get_video($width,$height) {
 	
 	
   }
+  if (preg_match_all('#<a href="http?://www.dailymotion.*?>([^>]*)</a>#i', $posting, $matches) ){
+	 add_filter( 'the_excerpt', 'get_video_link_excerpt' );
+	 $video =  $matches [1][0];
+	 $video =strip_tags($video);
+	 $video = str_replace(".com/video",".com/embed/video", $video);
+	 $video = str_replace("&nbsp;","",$video);
+	 $video = "<iframe width='$width' height='$height' src='$video'>
+	</iframe>";
+	
+	
+  }
   if(preg_match_all('/(mp[34]=.*)[\'"].*/i', $posting, $matches)){
 	   
   $video =$matches [1][0];
@@ -98,7 +114,8 @@ function get_video($width,$height) {
   
    return $video;
  }
- // Make a youtube link in the_content() a video preview
+ 
+ // Make a video link in the_content() a video that can be played
 function get_video_link($content){
 	if ( is_single() ) {
 	if (preg_match('#<a href="https?://www.youtube.*?>([^>]*)</a>#i', $content, $matches)  ){
@@ -111,7 +128,19 @@ function get_video_link($content){
 		</iframe>";
 		$content =preg_replace('/<a (.*?)href=[\"\'](.*?)\/\/(.*?)[\"\'](.*?)>(.*?)<\/a>/i', "$video", $content);
 	return $content;
-  }
+	}
+	if (preg_match('#<a href="http?://www.dailymotion.*?>([^>]*)</a>#i', $content, $matches)  ){
+		$video = $matches [1];
+		$video =strip_tags($video);
+		//Make the video link embeded if it is not
+		$video = str_replace(".com/video/",".com/embed/video/", $video);
+		$video = str_replace("&nbsp;","",$video);
+		$video = "<iframe class = 'embed'  src='$video' frameborder='0' allowfullscreen='allowfullscreen'>
+		</iframe>";
+		$content =preg_replace('/<a (.*?)href=[\"\'](.*?)\/\/(.*?)[\"\'](.*?)>(.*?)<\/a>/i', "$video", $content);
+	return $content;
+  
+	}
   // Make sure if there already is a video in an iframe that it is mobile friendly
   if(preg_match('/<iframe.*src=\"(.*)\".*><\/iframe>/isU',$content,$matches)){
 	  $video = $matches[0];
@@ -127,11 +156,17 @@ function get_video_link($content){
 
 // remove video links in text from the excerpt
 function get_video_link_excerpt($posting){
-	if (preg_match('#https://(?:www\.)?youtu\.?be(?:\.com)?/(embed/|watch\?v=|\?v=|v/|e/|.+/|watch.*v=*|)#i', $posting, $matches) ){
+	if (preg_match('@(https?://)?(?:www\.)?(youtu(?:\.be/([-\w]+)|be\.com/watch\?v=([-\w]+)))\S*@im', $posting, $matches) ){
 		// Replace video link text with blank text
 		$posting= preg_replace('@(https?://)?(?:www\.)?(youtu(?:\.be/([-\w]+)|be\.com/watch\?v=([-\w]+)))\S*@im',"", $posting);
 		// Replace embed video link text with blank text
 		$posting= preg_replace('@(https?://)?(?:www\.)?(youtu(?:\.be/([-\w]+)|be\.com/embed/([-\w]+)))\S*@im',"", $posting);
+  }
+  if (preg_match('!^.+dailymotion\.com/(video|hub)/([^_]+)[^#]*(#video=([^_&]+))?|(dai\.ly/([^_]+))!', $posting, $matches) ){
+		// Replace video link text with blank text
+		$posting= preg_replace('!^.+dailymotion\.com/(video|hub)/([^_]+)[^#]*(#video=([^_&]+))?|(dai\.ly/([^_]+))!',"", $posting);
+		// Replace embed video link text with blank text
+		$posting= preg_replace('!^.+dailymotion\.com/embed(video|hub)/([^_]+)[^#]*(#video=([^_&]+))?|(dai\.ly/([^_]+))!',"", $posting);
   }
 	
   return $posting; 
