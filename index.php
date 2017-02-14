@@ -3,9 +3,6 @@
 	created by Gus Lally*/ ?>
 
 
-
-
-	
 <?php get_header();include 'function.php';?>
 
 <?php
@@ -25,6 +22,7 @@ if(category_has_parent($catId)){
 	echo '<ul class = "nav">'; 
 	
 	 ?> 
+
 	<div style="padding-left:16px">
 	<script>
 	function myFunction2() {
@@ -45,6 +43,8 @@ if(category_has_parent($catId)){
 <br>
 
 <?php }?>
+
+
 <?php
 
 $get_category = null;
@@ -84,10 +84,10 @@ $get_category = null;
 <center><h1> <?php echo single_cat_title('') ; ?></center></h1>
 
 <?php $posts=query_posts($query_string."&orderby=date&order=DESC"); ?>
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?><li class = "noBullets">
 
 <?php post_results()?>
-<!--<hr> --> <?php endwhile;?> <?php else: ?>
+</li> <?php endwhile;?> <?php else: ?>
 <p><?php _e('Sorry, no posts matched your criteria.'); ?></p><?php endif; ?>
 
 <div  id="delimiter">

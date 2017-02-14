@@ -50,7 +50,6 @@ function get_image($height,$width) {
 
 
 function post_results(){ ?> 
-	
 	<div class="post" style="display: inline-block;">
 
 	<h1><a href="<?php the_permalink() ?>" rel="bookmark"  class="nounderline"title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1> 
@@ -63,7 +62,7 @@ function post_results(){ ?>
 	<?php if(isVideo()){?>
 			
 			<?php echo get_video(300,200) ?>
-	<?php }  ?>
+	<?php }?>
 	<a class="nounderline" href="<?php echo get_permalink(); ?>"><p><class="nounderline"<?php   the_excerpt();?> Read More...</p></a>
 
 	</div> <?php } 
@@ -149,11 +148,11 @@ function get_video_link($content){
 	$content =preg_replace('/<iframe.*src=\"(.*)\".*><\/iframe>/isU', "$video", $content);
 	  return $content;
   }
- } 
+
   return $content;
  
-}
-
+ }
+} 
 // remove video links in text from the excerpt
 function get_video_link_excerpt($posting){
 	if (preg_match('@(https?://)?(?:www\.)?(youtu(?:\.be/([-\w]+)|be\.com/watch\?v=([-\w]+)))\S*@im', $posting, $matches) ){

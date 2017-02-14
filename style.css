@@ -9,7 +9,9 @@ ul.related{
 	float: left;
 	clear: both;
 }
-
+li.noBullets{
+	list-style-type: none;
+}
 input.search {
   float: right;
   clear: both;
@@ -231,7 +233,7 @@ body{
 
 
 div.post {
-	
+
     width: 300px;
     padding: 0px;
     border: 25px black;
