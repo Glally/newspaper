@@ -88,7 +88,13 @@ $top_level_cat = smart_category_top_parent_id ($catId); ?>
               <h3>Related posts</h3>
               
                 <?php while( $related->have_posts() ): $related->the_post(); ?>
-				
+				<?php if(isImage()){?>
+		<?php echo get_image(100,100) ?>
+		<?php } ?>
+		<?php if(isVideo()){?>
+			
+			<?php echo get_video(150,100) ?>
+	<?php }?>
 			<p><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
 			<hr>
                 <?php endwhile; ?>

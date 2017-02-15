@@ -82,12 +82,12 @@ $get_category = null;
   
 
 <center><h1> <?php echo single_cat_title('') ; ?></center></h1>
-
+<center>
 <?php $posts=query_posts($query_string."&orderby=date&order=DESC"); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?><li class = "noBullets">
 
 <?php post_results()?>
-</li> <?php endwhile;?> <?php else: ?>
+</li> <?php endwhile;?></center> <?php else: ?>
 <p><?php _e('Sorry, no posts matched your criteria.'); ?></p><?php endif; ?>
 
 <div  id="delimiter">
