@@ -77,6 +77,10 @@ ul.footnav li a {
   transition: 0.3s;
   font-size: 16px;
 }
+iframe.preview{
+	width: 300 px;
+	height: 200 px;
+}
 iframe.embed {
 	width:800px;
 	height: 450px;
@@ -92,13 +96,17 @@ ul.nav li.icon {display: none;}
 
 
 @media screen and  (max-width:980px) {	
-	iframe.embed {
+	iframe.preview{
+		width: 150px;
+		height: 100px;
+	}
+	iframe {
 
 	width:300px;
 	height: 200px;
  
 
-	}
+	}*/
 	ul.nav{
 		display:block;
 		 float:center;
