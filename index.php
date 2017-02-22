@@ -123,9 +123,10 @@ $get_category = null;
 <!-- other posts -->
 <?php $posts=query_posts($query_string."&orderby=date&order=DESC&offset=7"); ?>
 <?php if (have_posts()) : ?>			
-			<ul class = "related">
-            <div class="post-navigation">
+			<ul style="float:right;">
+            <div style="float:right;">
 			 <h3> <?php echo "more $catTitle" ; ?></h3>
+			 
 	<?php while (have_posts()) : the_post(); ?>
 
 <?php if(isImage()){?>
@@ -137,7 +138,7 @@ $get_category = null;
 	<?php }?>
 			<p><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
 			<hr>
- <?php endwhile;?></ul></div><?php endif; ?>
+ <?php endwhile;?></div></ul><?php endif; ?>
   
 
 

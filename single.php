@@ -83,8 +83,8 @@ $top_level_cat = smart_category_top_parent_id ($catId); ?>
           if( $related->have_posts() ):
           ?>
 			
-			<ul class = "related">
-            <div class="post-navigation">
+			<ul class = "related" style="float:right;" >
+            <div class="post-navigation" style="float:right;">
               <h3>Related posts</h3>
               
                 <?php while( $related->have_posts() ): $related->the_post(); ?>
@@ -106,7 +106,7 @@ $top_level_cat = smart_category_top_parent_id ($catId); ?>
 	<center>
 	<?php $posts=query_posts($query_string."&orderby=date&order=DESC"); ?>
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-    <div class ="post"   style=width:38%  >
+    <div class ="post"   style= "width:38%; float:left;" >
         <h2><?php the_title();?></h2>
 		
 		
@@ -121,10 +121,11 @@ $top_level_cat = smart_category_top_parent_id ($catId); ?>
 </div>
 
 
-   	 <?php// comments_template(); ?>
+
 	
     <?php endwhile; endif; ?>
  <br> 
-
-<?php get_footer() ?>
+ 
+</center>
 <div class= "comment">	<?php comments_template();?> <style="display: inline-block;">	<div>
+<?php get_footer() ?>
