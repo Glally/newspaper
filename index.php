@@ -110,9 +110,9 @@ $get_category = null;
 
 <!-- More top posts -->
 
-<?php $posts=query_posts($query_string."&orderby=date&order=DESC&posts_per_page=5&offset=1"); ?>
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?><li class = "noBullets">
-<div class="post-navigation">
+<?php $posts=query_posts($query_string."&orderby=date&order=DESC&posts_per_page=6&offset=1"); ?>
+<?php if (have_posts()) :?><ul class = "related"><?php while (have_posts()) : the_post(); ?><li class = "noBullets">
+<div class="post">
 
 	
 	<?php post_results();?>
@@ -121,7 +121,7 @@ $get_category = null;
  <?php endwhile;?></li> <?php endif; ?>
 
 <!-- other posts -->
-<?php $posts=query_posts($query_string."&orderby=date&order=DESC&offset=6"); ?>
+<?php $posts=query_posts($query_string."&orderby=date&order=DESC&offset=7"); ?>
 <?php if (have_posts()) : ?>			
 			<ul class = "related">
             <div class="post-navigation">

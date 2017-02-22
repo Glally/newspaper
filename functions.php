@@ -57,7 +57,7 @@ function get_image($height,$width) {
 
 
 function post_results(){ ?> 
-	<div class="post" style="display: inline-block;">
+	
 	
 	<h1><a href="<?php the_permalink() ?>" rel="bookmark"  class="nounderline"title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1> 
 	<h4><a class="nounderline" href="<?php the_permalink() ?>">Posted on <?php the_time('F jS, Y') ?></h4>
@@ -72,7 +72,7 @@ function post_results(){ ?>
 	<?php }?>
 	<a class="nounderline" href="<?php echo get_permalink(); ?>"><p><class="nounderline"<?php   the_excerpt();?> Read More...</p></a>
 
-	</div> <?php } 
+	 <?php } 
 
 
 
