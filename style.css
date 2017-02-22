@@ -88,7 +88,10 @@ iframe.embed {
 
 	}
 
-
+iframe.nextPost{
+	width:400px;
+	height: 225px;
+}
 ul.nav li a:hover {background-color: #404040}
 
 ul.nav li.icon {display: none;}
@@ -106,7 +109,11 @@ ul.nav li.icon {display: none;}
 	height: 200px;
  
 
-	}*/
+	}
+	iframe.nextPost{
+	width:200px;
+	height: 150px;
+}
 	ul.nav{
 		display:block;
 		 float:center;

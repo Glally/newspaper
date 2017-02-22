@@ -1,4 +1,4 @@
-<?php/* Newspager theme 
+<?php/* Newspaper theme 
 
 	created by Gus Lally*/ ?>
 	
@@ -10,7 +10,7 @@
  */
 // Get the category name
 
-get_header(); include "function.php"; ?>
+get_header();?>
 
 <?php
 $catTitle = get_the_category()[0]->cat_name ;
@@ -93,7 +93,7 @@ $top_level_cat = smart_category_top_parent_id ($catId); ?>
 		<?php } ?>
 		<?php if(isVideo()){?>
 			
-			<?php echo get_video(150,100) ?>
+			<?php echo get_video(150,100,'preview'); ?>
 	<?php }?>
 			<p><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
 			<hr>
@@ -111,7 +111,7 @@ $top_level_cat = smart_category_top_parent_id ($catId); ?>
 		
 		
 
-     <p>    <?php  add_filter( 'the_content', 'get_video_link' ); the_content();?></p>
+       <?php  add_filter( 'the_content', 'get_video_link' ); the_content();?>
             
 
 <p  class="nounderline"><?php the_tags('Tags: ', ', ', '<br />'); ?><b> Posted by:</b> <?php the_author(); ?> <b>on:</b> <?php the_time('M.d, Y') ?> </p>

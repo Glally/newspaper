@@ -68,7 +68,7 @@ function post_results(){ ?>
 	<?php } ?>
 	<?php if(isVideo()){?>
 			
-			<?php echo get_video(300,200) ?>
+			<?php echo get_video(300,200,'preview') ?>
 	<?php }?>
 	<a class="nounderline" href="<?php echo get_permalink(); ?>"><p><class="nounderline"<?php   the_excerpt();?> Read More...</p></a>
 
@@ -76,7 +76,7 @@ function post_results(){ ?>
 
 
 
-function get_video($width,$height) {
+function get_video($width,$height,$Class) {
 	global $post, $posts;
   $video = '';
   $posting = $post->post_content;
@@ -86,9 +86,12 @@ function get_video($width,$height) {
 	 add_filter( 'the_excerpt', 'get_video_link_excerpt' );
 	 $video =  $matches [1][0];
 	 $video =strip_tags($video);
+	 //Get rid of &t=time if it is on the link
+	 $arrays =  preg_split('/&/', $video, PREG_SPLIT_OFFSET_CAPTURE);
+	 $video = $arrays[0];
 	 $video = str_replace("/watch?v=","/embed/", $video);
 	 $video = str_replace("&nbsp;","",$video);
-	 $video = "<iframe  class = 'preview' width='$width' height='$height' src='$video'>
+	 $video = "<iframe  class = '$Class' width='$width' height='$height' src='$video'>
 	</iframe>";
 	
 	
@@ -99,7 +102,7 @@ function get_video($width,$height) {
 	 $video =strip_tags($video);
 	 $video = str_replace(".com/video",".com/embed/video", $video);
 	 $video = str_replace("&nbsp;","",$video);
-	 $video = "<iframe width='$width' height='$height' src='$video'>
+	 $video = "<iframe class ='$Class' width='$width' height='$height' src='$video'>
 	</iframe>";
 	
 	
@@ -113,7 +116,7 @@ function get_video($width,$height) {
   if(preg_match('/<iframe.*src=\"(.*)\".*><\/iframe>/isU', $posting, $matches)){
 	   
   $video =$matches [1];
-  $video = "<iframe  class ='preview' width='$width' height='$height' src='$video'>
+  $video = "<iframe  class ='$Class' width='$width' height='$height' src='$video'>
 	</iframe>";
   }
   
@@ -127,6 +130,9 @@ function get_video_link($content){
 	if (preg_match('#<a href="https?://www.youtube.*?>([^>]*)</a>#i', $content, $matches)  ){
 		$video = $matches [1];
 		$video =strip_tags($video);
+		//Get rid of &t=time if it is on the link
+		$arrays =  preg_split('/&/', $video, PREG_SPLIT_OFFSET_CAPTURE);
+		$video = $arrays[0];
 		//Make the video link embeded if it is not
 		$video = str_replace("/watch?v=","/embed/", $video);
 		$video = str_replace("&nbsp;","",$video);
