@@ -22,8 +22,8 @@
 			 <h3> <?php echo "more news" ; ?></h3>
 			 
 	<?php while (have_posts()) : the_post(); ?>
-
-<?php if(isImage()){?>
+	<p><h3><?php echo get_the_category()[0]->cat_name ;?></h3></p>
+	<?php if(isImage()){?>
 		<?php echo get_image(100,100) ?>
 		<?php } ?>
 		<?php if(isVideo()){?>
@@ -65,6 +65,8 @@ $categories = get_categories( $list );
             ?>
 			
 			<div class="post" >
+			
+			<h1><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1><br>
            <?php if(isImage()){?>
 	<?php echo get_image() ?>
 	<?php } ?>
@@ -73,7 +75,7 @@ $categories = get_categories( $list );
 			<?php echo get_video(800,450,'embed') ?><br>
 	<?php }?>
 	<a class="nounderline" href="<?php echo get_permalink(); ?>"><class="nounderline"<?php   the_excerpt();?> Read More...</a>
-			</div>
+			</div><br>
         <?php }  ?>
 		
 		</center>
