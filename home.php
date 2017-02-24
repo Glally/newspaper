@@ -4,7 +4,7 @@
 	created by Gus Lally*/ ?>
 <?php
 	get_header();?>
-<center style="float:left;">	
+
 
 <?php
 	
@@ -31,16 +31,17 @@ $categories = get_categories( $list );
 
 <?php if ( $query->have_posts() ) { ?>
 		
-	<ul class = "related">
+	
+			<div class="post" style="float:right;">
 	<h2><?php	echo ' <a rel="canonical" class="nounderline" href="' . get_category_link( $category->term_id ) . '">' .'Latest in '. $category->name . '</a> '; ?>:</h2>
      
 		
         <?php while ( $query->have_posts() ) {?>
-				
+		
          <?php   $query->the_post();
             ?>
 			
-			<div class="post" style=" float:left; ">
+			
 			
 			<h1><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1><br>
            <?php if(isImage()){?>
@@ -51,7 +52,7 @@ $categories = get_categories( $list );
 			<?php echo get_video(400,225) ?><br>
 	<?php }?>
 	<a class="nounderline" href="<?php echo get_permalink(); ?>"><class="nounderline"<?php   the_excerpt();?> Read More...</a>
-			</div></ul>
+			</div>
 			
         <?php }  ?>
 		
@@ -59,7 +60,7 @@ $categories = get_categories( $list );
  
 <?php } // end if
 	
-    }?></center><center style="float:top-right;">
+    }?><div style="float:top-right;">
 	
 <!-- other posts -->
 <?php // Make a list of parrent categories 1 post per category
