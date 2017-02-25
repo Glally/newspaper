@@ -95,7 +95,7 @@ $get_category = null;
 
 	
 	<?php if(isImage()){?>
-	<?php echo get_image() ?>
+	<?php echo get_image() ?><br>
 	<?php } ?>
 	<?php if(isVideo()){?>
 			
@@ -111,11 +111,12 @@ $get_category = null;
 <!-- More top posts -->
 
 <?php $posts=query_posts($query_string."&orderby=date&order=DESC&posts_per_page=6&offset=1"); ?>
+<center>
 <?php if (have_posts()) :?><ul class = "related"><?php while (have_posts()) : the_post(); ?><li class = "noBullets">
 <div class="post">
 
 	
-	<?php post_results();?>
+	<?php echo post_results();?>
 
 	</div>
  <?php endwhile;?></li> <?php endif; ?>
@@ -123,8 +124,8 @@ $get_category = null;
 <!-- other posts -->
 <?php $posts=query_posts($query_string."&orderby=date&order=DESC&offset=7"); ?>
 <?php if (have_posts()) : ?>			
-			<ul style="float:right;">
-            <div style="float:right;">
+			<ul style="float:to-right;">
+            <div style="float:top-right;">
 			 <h3> <?php echo "more $catTitle" ; ?></h3>
 			 
 	<?php while (have_posts()) : the_post(); ?>
@@ -134,7 +135,7 @@ $get_category = null;
 		<?php } ?>
 		<?php if(isVideo()){?>
 			
-			<?php echo get_video(150,100,'preview') ?>
+			<?php echo get_video(150,100,'smallPreview') ?>
 	<?php }?>
 			<p><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
 			<hr>

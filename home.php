@@ -31,7 +31,7 @@ $categories = get_categories( $list );
 
 <?php if ( $query->have_posts() ) { ?>
 		
-	
+			
 			<div class="post" style="float:right;">
 	<h2><?php	echo ' <a rel="canonical" class="nounderline" href="' . get_category_link( $category->term_id ) . '">' .'Latest in '. $category->name . '</a> '; ?>:</h2>
      
@@ -60,7 +60,7 @@ $categories = get_categories( $list );
  
 <?php } // end if
 	
-    }?><div style="float:top-right;">
+    }?><ul style="float:top-right;">
 	
 <!-- other posts -->
 <?php // Make a list of parrent categories 1 post per category
@@ -73,7 +73,8 @@ $category2 = get_categories( $list );
 );
 		$query2 = new WP_Query( $args2 );?>
 		
-<?php if ($query2->have_posts()){ ?>			
+<?php if ($query2->have_posts()){ ?>	
+	
      <div class="post-navigation" style="width:200px;">	
 		<p><h3><?php echo "more ".$category->name ;?></h3></p> 
 	<?php while ($query2->have_posts()) { ?><?php $query2->the_post(); ?>
@@ -84,11 +85,11 @@ $category2 = get_categories( $list );
 		<?php } ?>
 		<?php if(isVideo()){?>
 			
-			<?php echo get_video(150,100,'preview') ?>
+			<?php echo get_video(150,100,'smallPreview') ?>
 	<?php }?>
 			<p><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
 			<hr>
-<?php }?></div><br><br><br><br><br><br><br><?php }?></ul><?php } ?>
+<?php }?></div><?php }?><br><br><br><br><br><br><br><?php } ?>
 
  
  

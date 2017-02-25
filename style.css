@@ -99,9 +99,17 @@ ul.nav li.icon {display: none;}
 
 
 @media screen and  (max-width:980px) {	
+	video.smallPreview{
+		width: 75px;
+		height: 50px;
+	}
 	iframe.preview{
 		width: 150px;
 		height: 100px;
+	}
+	iframe.smallPreview{
+		width: 75px;
+		height: 50px;
 	}
 	iframe {
 

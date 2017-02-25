@@ -1,8 +1,8 @@
-<?php/* Newspager theme 
+<?php/* Newspaper theme 
 
 	created by Gus Lally*/ ?>
 
-<?php get_header(); include "function.php"; ?>
+<?php get_header();  ?>
 <?php
     global $query_string;
     $query_args = explode("&", $query_string);
@@ -21,7 +21,7 @@
     <ul> 
     <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 		
-            <?php post_results()?>
+          <center>  <?php post_results()?></center>
 			
     <?php endwhile; ?>
     </ul>

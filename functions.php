@@ -56,13 +56,11 @@ function get_image($height,$width) {
 }
 
 
-function post_results(){ ?> 
+function post_results($postitions){ ?> 
 	
 	
 	<h1><a href="<?php the_permalink() ?>" rel="bookmark"  class="nounderline"title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1> 
 	<h4><a class="nounderline" href="<?php the_permalink() ?>">Posted on <?php the_time('F jS, Y') ?></h4>
-
-	
 	<?php if(isImage()){?>
 	<?php echo get_image(200,200) ?>
 	<?php } ?>
@@ -70,7 +68,7 @@ function post_results(){ ?>
 			
 			<?php echo get_video(300,200,'preview') ?>
 	<?php }?>
-	<a class="nounderline" href="<?php echo get_permalink(); ?>"><p><class="nounderline"<?php   the_excerpt();?> Read More...</p></a>
+	<p><center><a class="nounderline" href="<?php echo get_permalink(); ?>"><class="nounderline"  <?php the_excerpt();?> Read More... </a></center></p>
 
 	 <?php } 
 
@@ -111,7 +109,7 @@ function get_video($width,$height,$Class) {
 	   
   $video =$matches [1][0];
   $video = str_replace('mp4="', '', $video) ;
-  $video="<video width='$width' height='$height' controls src='$video'></video>";
+  $video="<video class ='$Class' width='$width' height='$height' controls src='$video'></video>";
   }
   if(preg_match('/<iframe.*src=\"(.*)\".*><\/iframe>/isU', $posting, $matches)){
 	   
@@ -206,7 +204,6 @@ function link_post($cat_post){
 }
 
 ?>
-
 
 
 <?php
