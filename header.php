@@ -79,6 +79,8 @@ $top_level_cat = smart_category_top_parent_id ($catid);
 echo '<ul class = "nav">'; ?>
 
 <?php
+$parent = get_cat_name($category[0]->category_parent);
+
 $category = get_the_category($post->ID);
  
 
@@ -94,7 +96,7 @@ $top_level_cat = smart_category_top_parent_id ($catId); ?>
 	</div>
 		<li class="icon"> 
 	
-    <a href="javascript:void(0);" style="font-size:15px;"class="nounderline" onclick="myFunction2()"><?php echo$catTitle;?></a>
+    <a href="javascript:void(0);" style="font-size:15px;"class="nounderline" onclick="myFunction2()"><?php  echo $parent;?></a>
     </li>
 
 <li><h3> <?php  $get_category = wp_list_categories('orderby=id&depth=1
