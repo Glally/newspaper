@@ -33,7 +33,7 @@ $categories = get_categories( $list );
 			
 			
    
-		
+		<br>
         <?php while ( $query->have_posts() ) {?>
 		
 		<center>
@@ -43,7 +43,7 @@ $categories = get_categories( $list );
             ?>
 			
 			
-			<p>
+			
 			<h1><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1><br>
 			
            <?php if(isImage()){?>
@@ -59,11 +59,11 @@ $categories = get_categories( $list );
 	
 				
         <?php }  ?>
-		<div class="post"><?php get_other_posts($category->name);?></div></div></center></p>
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
+		
+<br>
 
 <?php } // end if?>
-	
+	<?php get_other_posts($category->name);?></center>
    <?php }?>
 
  

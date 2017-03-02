@@ -233,14 +233,14 @@ function get_other_posts($catname){?>
 	
    <?php
 	 $posts=query_posts($query_string."&category_name=$catname&orderby=category=DESC&posts_per_page=6&offset=1"); 
- if (have_posts()) :?> <center><p><h3><?php echo "more ".$catname ;?> </h3>
- <?php while (have_posts()) : the_post(); echo'<li class = "noBullets">';?>
+ if (have_posts()) :?> <h3><?php echo "more ".$catname ;?> </h3><ul class = "related;"> <div class="post-navigation" style="display:inline-block;">
+ <?php while (have_posts()) :?> <?php the_post();?> 
 
 			
 	
 
 	
-	
+	<div>
 	<?php if(isImage()){
 		 echo get_image(100,100);
 	} 
@@ -248,9 +248,9 @@ function get_other_posts($catname){?>
 			
 		echo get_video(150,100,'smallPreview');
 	 }
-			?><p><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
-			<hr>
- <?php endwhile;?> <?php endif; 
+			?><center><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a><hr></center></div>
+			
+ <?php endwhile;?></div></ul><br><?php endif;
 
 	
 }
