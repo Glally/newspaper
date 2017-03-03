@@ -4,6 +4,8 @@
 
 form.search {
   overflow: hidden;
+  float:right;
+  width:200px;
 }
 ul.related{
 	float: left;
@@ -36,7 +38,13 @@ input[type=submit] {
     background-color:#F5F5F5;
 	width: 100;
 }
-
+#title{
+	list-style-type: none;
+  margin: 0;
+  padding:0;
+  overflow: hidden; 
+  background-color:#002334; 
+}
 ul.topnav {
 
   list-style-type: none;
@@ -44,8 +52,8 @@ ul.topnav {
   padding:0;
   overflow: hidden; 
   background-color:#002334; 
-/* 
-  width: 100%;
+ 
+ /* width: 100%;
 position: fixed;
 */
 
@@ -102,9 +110,21 @@ ul.nav li a:hover {background-color: #404040}
 
 ul.nav li.icon {display: none;}
 
+ul.nav{
+	width: 100%;
+	position: fixed;
+
+}
 
 
 @media screen and  (max-width:980px) {	
+iframe.embed {
+	width:600px;
+	height: 250px;
+ 
+
+	}
+
 	video.smallPreview{
 		width: 75px;
 		height: 50px;

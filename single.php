@@ -11,7 +11,7 @@
 // Get the category name
 
 get_header();?>
-
+<br><br><br><br><br>
 <!-- related posts -->
  <?php $related = ci_get_related_posts( get_the_ID(), -1 );
  
