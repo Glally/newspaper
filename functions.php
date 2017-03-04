@@ -89,7 +89,7 @@ function get_video($width,$height,$Class) {
 	 $video = $arrays[0];
 	 $video = str_replace("/watch?v=","/embed/", $video);
 	 $video = str_replace("&nbsp;","",$video);
-	 $video = "<iframe  class = '$Class' width='$width' height='$height' src='$video'>
+	 $video = "<iframe  class = '$Class' width='$width' height='$height' frameborder='0' src='$video'>
 	</iframe>";
 	
 	
@@ -100,7 +100,7 @@ function get_video($width,$height,$Class) {
 	 $video =strip_tags($video);
 	 $video = str_replace(".com/video",".com/embed/video", $video);
 	 $video = str_replace("&nbsp;","",$video);
-	 $video = "<iframe class ='$Class' width='$width' height='$height' src='$video'>
+	 $video = "<iframe class ='$Class' width='$width' frameborder='0' height='$height' src='$video'>
 	</iframe>";
 	
 	
@@ -114,7 +114,7 @@ function get_video($width,$height,$Class) {
   if(preg_match('/<iframe.*src=\"(.*)\".*><\/iframe>/isU', $posting, $matches)){
 	   
   $video =$matches [1];
-  $video = "<iframe  class ='$Class' width='$width' height='$height' src='$video'>
+  $video = "<iframe  class ='$Class' width='$width' frameborder='0' height='$height' src='$video'>
 	</iframe>";
   }
   
