@@ -66,7 +66,8 @@ $top_level_cat = smart_category_top_parent_id ($catid);
 
 
 <?php if($catTitle != get_bloginfo('description') && is_category() && !empty(get_categories('orderby=id&depth=1
-    &title_li=&use_desc_for_title=1&child_of='.$top_level_cat))||is_single()) {
+    &title_li=&use_desc_for_title=1&child_of='.$top_level_cat))||is_single()  && !empty(get_categories('orderby=id&depth=1
+    &title_li=&use_desc_for_title=1&child_of='.$top_level_cat))) {
  // get the top level cat id of a single post
 
 
