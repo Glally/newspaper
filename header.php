@@ -6,9 +6,11 @@
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 
 <head>
+
 <title><?php echo get_bloginfo('name')?></title>
 <div class="top">
 <ul class="nav">
+
 <ul id="title" class="topnav">
 <center>
 <a  rel="canonical" class="nounderline" href="<?php echo home_url();?>"><h1><?php echo get_bloginfo( 'name' ); ?></h1></a>
@@ -21,7 +23,7 @@
 
 
 
-
+<ul style="float:left"><?php echo date("l  F j, Y ");?></ul>
  <li style="float:left;"><h3> <?php  $get_category = wp_list_categories('orderby=id&depth=1
 		&title_li=&use_desc_for_title=1&child_of='.$top_level_cat); ?> </h3></li>
 
