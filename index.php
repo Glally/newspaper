@@ -6,7 +6,6 @@
 
 	
 <?php get_header();?>
-
 <center><h1> <?php echo single_cat_title('') ; ?></center></h1> 
 <!-- main post -->
 <ul>
@@ -51,7 +50,7 @@
 <!-- other posts -->
 <?php $posts=query_posts($query_string."&orderby=date&order=DESC&offset=7"); ?>
 <?php if (have_posts()) : ?>			
-			<ul style="float:to-right;">
+			<ul style="float:top-right;">
             <div style="float:top-right;">
 			 <h3> <?php echo "more ".single_cat_title('',false); ?></h3>
 			 
