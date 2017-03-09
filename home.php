@@ -5,7 +5,7 @@
 <?php
 	get_header();?>
 
-
+<center><h1><?php if(!is_category()&& !is_single()&& !is_search()){ bloginfo('description');} ?></center></h1><hr>
 <?php
 	
 // List of parrent categories variable
@@ -51,7 +51,7 @@ $categories = get_categories( $list );
 	<?php } ?>
 	<?php if(isVideo()){?>
 			
-			<?php echo get_video(400,225) ?><br>
+			<?php echo get_video(800,450) ?><br>
 	<?php }?>
 	
 	<a class="nounderline" href="<?php echo get_permalink(); ?>"><class="nounderline"<?php   the_excerpt();?> Read More...</a></p>
