@@ -51,7 +51,7 @@ $categories = get_categories( $list );
 	<?php } ?>
 	<?php if(isVideo()){?>
 			
-			<?php echo get_video(800,450) ?><br>
+			<?php echo get_video(800,450,"embed") ?><br>
 	<?php }?>
 	
 	<a class="nounderline" href="<?php echo get_permalink(); ?>"><class="nounderline"<?php   the_excerpt();?> Read More...</a></p>

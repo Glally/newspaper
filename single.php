@@ -40,29 +40,33 @@ get_header();?>
 	
     <?php endwhile; endif; ?>
 	</center>
+	
 <!-- related posts -->
  <?php $related = ci_get_related_posts( get_the_ID(), -1 );
  
           if( $related->have_posts() ):
           ?>
+			<ul class ="related">
 			
-			
-            <div class="RP" >
-              <h3>Related posts</h3>
+          
               
+              	  <h3>Related posts</h3>
                 <?php while( $related->have_posts() ): $related->the_post(); ?>
+				<div style = "display:inline-block;"  >
+				  
 				<?php if(isImage()){?>
 		<?php echo get_image(100,100) ?>
 		<?php } ?>
 		<?php if(isVideo()){?>
 			
-			<?php echo get_video(150,100,'preview'); ?>
+		 <?php echo get_video(300,169,'preview'); ?> 
 	<?php }?>
 			<p><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
 			<hr>
+			 </div>&nbsp;&nbsp;
                 <?php endwhile; ?>
-            </div></ul>
            
+           </ul>
           <?php
           endif; ?> 
 
