@@ -7,7 +7,7 @@
 
 <center><h1><?php if(!is_category()&& !is_single()&& !is_search()){ bloginfo('description');} ?></center></h1><hr>
 <?php
-	
+
 // List of parrent categories variable
     $list =  array('orderby'=> DESC,
   'parent' => 0
@@ -38,13 +38,13 @@ $categories = get_categories( $list );
 		
 		<center>
 			<div class="post-navigation" >
-	<h2><?php	echo ' <a rel="canonical" class="nounderline" href="' . get_category_link( $category->term_id ) . '">' .'Latest in '. $category->name . '</a> '; ?>:</h2>
+	<h1><?php	echo ' <a rel="canonical" class="nounderline" href="' . get_category_link( $category->term_id ) . '">' .'Latest in '. $category->name .':'. '</a> '; ?></h1>
          <?php   $query->the_post();
             ?>
 			
 			
 			
-			<h1><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1><br>
+			<h1><a class="titles" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1><br>
 			
            <?php if(isImage()){?>
 	<?php echo get_image() ?><br>

@@ -62,7 +62,7 @@ get_header();?>
 			
 		 <?php echo get_video(400,225,'nextPost'); ?> 
 	<?php }?>
-			<p><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
+			<p><h3><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3></p>
 			<hr>
 			 </div>&nbsp;&nbsp;
                 <?php endwhile; ?>

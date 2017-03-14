@@ -21,6 +21,7 @@
 
 
 
+
 //Check if there is a parrent category
 function category_has_parent($catid){
     $category = get_category($catid);
@@ -233,7 +234,7 @@ function get_other_posts($catname){?>
 	
    <?php
 	 $posts=query_posts($query_string."&category_name=$catname&orderby=category=DESC&posts_per_page=6&offset=1"); 
- if (have_posts()) :?> <h3><?php echo "more ".$catname ;?> </h3> 
+ if (have_posts()) :?> <h1><?php echo "more ".$catname ;?> </h1> 
  <?php while (have_posts()) :?> <?php the_post();?> 
 	<div  style="display:inline-block;">
 			
@@ -242,13 +243,13 @@ function get_other_posts($catname){?>
 	
 	
 	<?php if(isImage()){
-		 echo get_image(100,100);
+		 echo get_image(100,200);
 	} 
 	 if(isVideo()){
 			
-		echo get_video(300,169,'Preview');
+		echo get_video(400,225,'nextPost');
 	 }
-			?><center><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a><hr></center></div>&nbsp;&nbsp;
+			?><center><h3><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></h3></a><hr></center></div>&nbsp;&nbsp;
 		
  <?php endwhile;?><?php endif;
 
