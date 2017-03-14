@@ -44,7 +44,7 @@ $categories = get_categories( $list );
 			
 			
 			
-			<h1><a class="titles" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1><br>
+			<h1><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1><br>
 			
            <?php if(isImage()){?>
 	<?php echo get_image() ?><br>
