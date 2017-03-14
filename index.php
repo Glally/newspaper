@@ -15,7 +15,7 @@
 
 
 <center>
-<h1><?php echo category_description(); ?></h1>
+<p align="center"><?php echo category_description(); ?></p>
 <?php $posts=query_posts($query_string."&orderby=date&order=DESC&posts_per_page=7"); ?>
 <?php if (have_posts()) :?> <?php while (have_posts()) : the_post(); ?>
 
@@ -54,7 +54,7 @@
 		<?php } ?>
 		<?php if(isVideo()){?>
 			
-			<?php echo get_video(300,169,'preview') ?>
+			<?php echo get_video(400,225,'nextPost') ?>
 	<?php }?>
 			<p><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
 			<hr></div>&nbsp;&nbsp;

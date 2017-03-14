@@ -18,7 +18,7 @@ get_header();?>
 	<?php $posts=query_posts($query_string."&orderby=date&order=DESC"); ?>
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	
-    <div class ="post"   style= "width:38%;" >
+    <div class ="post"  >
 		<br>
        <center> <h2><?php the_title();?></h2></center>
 		
@@ -41,13 +41,13 @@ get_header();?>
 	
     <?php endwhile; endif; ?>
 	</center>
-<center>	
+	
 <!-- related posts -->
  <?php $related = ci_get_related_posts( get_the_ID(), -1 );
  
           if( $related->have_posts() ):
           ?>
-			<ul class ="related">
+			
 			
           
               
@@ -60,18 +60,18 @@ get_header();?>
 		<?php } ?>
 		<?php if(isVideo()){?>
 			
-		 <?php echo get_video(300,169,'preview'); ?> 
+		 <?php echo get_video(400,225,'nextPost'); ?> 
 	<?php }?>
 			<p><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
 			<hr>
 			 </div>&nbsp;&nbsp;
                 <?php endwhile; ?>
            
-           </ul>
+           
           <?php
           endif; ?> 
 
  
-</center>
+
 
 <?php get_footer() ?>
