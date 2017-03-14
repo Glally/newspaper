@@ -18,7 +18,8 @@ get_header();?>
 	<?php $posts=query_posts($query_string."&orderby=date&order=DESC"); ?>
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	
-    <div class ="post"   style= "width:38%;float:left;" >
+    <div class ="post"   style= "width:38%;" >
+		<br>
        <center> <h2><?php the_title();?></h2></center>
 		
 		
@@ -40,7 +41,7 @@ get_header();?>
 	
     <?php endwhile; endif; ?>
 	</center>
-	
+<center>	
 <!-- related posts -->
  <?php $related = ci_get_related_posts( get_the_ID(), -1 );
  
@@ -71,6 +72,6 @@ get_header();?>
           endif; ?> 
 
  
-
+</center>
 
 <?php get_footer() ?>
