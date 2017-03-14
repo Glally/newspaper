@@ -5,7 +5,7 @@
 <?php
 	get_header();?>
 
-<center><h1><?php if(!is_category()&& !is_single()&& !is_search()){ bloginfo('description');} ?></center></h1><hr>
+<center><h1 class ="titles"><?php if(!is_category()&& !is_single()&& !is_search()){ bloginfo('description');} ?></center></h1><hr>
 <?php
 
 // List of parrent categories variable
@@ -38,7 +38,7 @@ $categories = get_categories( $list );
 		
 		<center>
 			<div class="post-navigation" >
-	<h1><?php	echo ' <a rel="canonical" class="nounderline" href="' . get_category_link( $category->term_id ) . '">' .'Latest in '. $category->name .':'. '</a> '; ?></h1>
+	<h1 class = "titles"><?php	echo ' <a rel="canonical" class="nounderline" href="' . get_category_link( $category->term_id ) . '">' .'Latest in '. $category->name .':'. '</a> '; ?></h1>
          <?php   $query->the_post();
             ?>
 			

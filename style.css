@@ -13,6 +13,9 @@ div.rp{
 	
 	
 }
+h1.titles{
+	font-size:50px;
+}
 ul.related{
 	float: left;
 	clear: both;
@@ -126,11 +129,7 @@ ul.nav{
 
 
 }
-a.titles{
-	color: black;
-	text-decoration:none; 
-	font-size:100%;
-}
+
 
 a:link{
 	color: black;
@@ -206,7 +205,7 @@ body{
 
 div.post {
 
-    width: 450px;
+    width: 65%;
     padding: 0px;
     border: 25px black;
     margin: 25px;
@@ -258,6 +257,25 @@ input[type=text]:focus {
 
 
 
+@media screen and (max-width: 1024px){
+	div.post{
+		width:700px;
+		
+	}
+	iframe.nextPost{
+	width:300px;
+	height: 169px;
+}
+}
+@media screen and (max-width: 768px){
+	div.post{
+		width:525px;
+	}
+	iframe.nextPost{
+	width:200px;
+	height: 112px;
+}
+}
 
 /* Tablet and smartphone screen size */
 @media screen and  (max-width:700px) {	
@@ -267,14 +285,16 @@ iframe.embed {
  
 
 	}
-	
+	div.post{
+		width:550px;
+	}
 	div.rp{
    
     clear:both;
 	bottom: 0px;
 	
 	}
-
+	
 	video.smallPreview{
 		width: 75px;
 		height: 50px;
@@ -290,7 +310,7 @@ iframe.embed {
 	iframe {
 
 	width:300px;
-	height: 200px;
+	height: 169px;
  
 
 	}
@@ -306,7 +326,8 @@ iframe.embed {
   ul.nav li.icon {
     float: bottom;
 	display: inline-block;
-	margin:0px;	
+	margin:0px;
+	
   }
 	
 	
@@ -342,20 +363,23 @@ iframe.embed {
 		font-size:16px;
 		
 	}	
-  ul.nav.responsive {position: relative;}
+  ul.nav.responsive {position: fixed; height: 100%;
+	width:100%; }
   ul.nav.responsive li.icon {
     position: absolute;
     right: 0;
     top: 0;
+	
   }
   ul.nav.responsive li {
 	float: none;
     display: block;
+	
   }
   ul.nav.responsive li a {
     display: block;
-    text-align: left;
-	
+    text-align: center;
+	font-size:250%;
 
   }
  

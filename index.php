@@ -7,7 +7,7 @@
 	
 <?php get_header();?>
 <br>
-<center><h1> <?php echo single_cat_title('') ; ?></center></h1><hr>
+<center><h1 class="titles"> <?php echo single_cat_title('') ; ?></center></h1><hr>
 
 
 <!-- main posts -->
@@ -20,7 +20,7 @@
 <?php if (have_posts()) :?> <?php while (have_posts()) : the_post(); ?>
 
 	
-			<div class ="post" >
+			<div class ="post"  >
 	
 	<h1><a href="<?php the_permalink() ?>" rel="bookmark"  class="nounderline"title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1> 
 	<h4><a class="nounderline" href="<?php the_permalink() ?>">Posted on <?php the_time('F jS, Y') ?></h4>
@@ -31,7 +31,7 @@
 	<?php } ?>
 	<?php if(isVideo()){?>
 			
-			<center><?php echo get_video(800,450,'embed') ?></center><br>
+			<?php echo get_video(800,450,'embed') ?><br>
 	<?php }?>
 	<a class="nounderline" href="<?php echo get_permalink(); ?>"><class="nounderline"<?php   the_excerpt();?> Read More...</a>
 

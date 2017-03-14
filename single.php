@@ -53,7 +53,7 @@ get_header();?>
               
               	  <h3>Related posts</h3>
                 <?php while( $related->have_posts() ): $related->the_post(); ?>
-				<div style = "display:inline-block;"  >
+				<div  style = "display:inline-block;"  >
 				  
 				<?php if(isImage()){?>
 		<?php echo get_image(100,100) ?>
