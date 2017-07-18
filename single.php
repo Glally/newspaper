@@ -30,7 +30,7 @@ get_header();?>
 <p  class="nounderline"><?php the_tags('Tags: ', ', ', '<br />'); ?><center><b> Posted by:</b> <?php the_author(); ?> <b>on:</b> <?php the_time('M.d, Y') ?></center> </p>
 
 
-<div class= "comment">	<?php comments_template();?> <style="display: inline-block;">	<div>
+   <div class ="post"  >	<?php comments_template();?>
 
 
 
