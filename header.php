@@ -1,12 +1,11 @@
-<doctype! html>
+<!DOCTYPE html>
 <?php /* Newspaper theme 
 
 	created by Gus Lally*/?> 
 <html>
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
-
+<?php wp_site_icon();?>
 <head>
-
 <title><?php echo get_bloginfo('name')?></title>
 <div class="top">
 <ul class="nav">
@@ -117,6 +116,7 @@ $top_level_cat = smart_category_top_parent_id ($catId); ?>
 
 </head>
 <body>
+
 <br><br><br><br><br><br><br><br>
 <center><h1><?php if(is_search()){
 			echo "results";} ?> </center></h1>
